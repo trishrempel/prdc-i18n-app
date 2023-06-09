@@ -11,6 +11,7 @@ import { useTranslation, Trans } from "react-i18next";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 const FILE_TYPES = ["file", "image", "video"];
+const CURRENCIES = ["USD", "EUR", "JPY"];
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -30,15 +31,41 @@ function App() {
     ));
   }, [t]);
 
+  const CurrencyOptions = useMemo(() => {
+    let currencyNames;
+    try {
+      currencyNames = new Intl.DisplayNames(i18n.language, {
+        type: "currency",
+      });
+    } catch {
+      currencyNames = new Intl.DisplayNames(i18n.resolvedLanguage, {
+        type: "currency",
+      });
+    }
+    return CURRENCIES.map((currency) => (
+      <option key={currency} value={currency}>
+        {`${currencyNames.of(currency)} (${currency})`}
+      </option>
+    ));
+  }, [i18n.language, i18n.resolvedLanguage]);
+
   const updateFormattedAmount = useCallback(() => {
     if (isNaN(amount) || amount === "") {
       setFormattedAmount("");
       setFormattedCurrency("");
     } else {
-      setFormattedAmount(amount.toString());
-      setFormattedCurrency(`$${amount.toString()} ${currency}`);
+      try {
+        setFormattedAmount(amount.toLocaleString(i18n.language));
+        setFormattedCurrency(
+          amount.toLocaleString(i18n.language, {
+            style: "currency",
+            currency,
+            currencyDisplay: "narrowSymbol",
+          })
+        );
+      } catch {}
     }
-  }, [amount, currency]);
+  }, [amount, currency, i18n.language]);
 
   useEffect(() => {
     updateFormattedAmount();
@@ -63,11 +90,14 @@ function App() {
     if (isNaN(date.getTime())) {
       setFormattedDate("");
     } else {
-      setFormattedDate(
-        `${
-          date.getUTCMonth() + 1
-        }/${date.getUTCDate()}/${date.getUTCFullYear()}`
-      );
+      try {
+        setFormattedDate(
+          date.toLocaleDateString(i18n.language, {
+            timeZone: "UTC",
+            dateStyle: "long",
+          })
+        );
+      } catch {}
     }
   };
 
@@ -76,7 +106,14 @@ function App() {
     if (isNaN(quantity)) {
       setFormattedQuantity("");
     } else {
-      setFormattedQuantity(t("formatted-quantity", { count: quantity }));
+      try {
+        setFormattedQuantity(
+          t("formatted-quantity", {
+            count: quantity,
+            formattedCount: quantity.toLocaleString(i18n.language),
+          })
+        );
+      } catch {}
     }
   };
 
@@ -135,9 +172,7 @@ function App() {
               id="currency"
               onChange={handleCurrencyChange}
             >
-              <option value="USD">US Dollar (USD)</option>
-              <option value="EUR">Euro (EUR)</option>
-              <option value="JPY">Japanese Yen (JPY)</option>
+              {CurrencyOptions}
             </select>
             <label htmlFor="amount">{t("label-amount")}</label>
             <input id="amount" type="number" onChange={handleAmountChange} />
