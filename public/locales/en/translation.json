@@ -10,5 +10,14 @@
   "label-formatted-amount": "Formatted amount:",
   "label-formatted-currency": "Formatted currency:",
   "label-file-type": "Select a file type:",
-  "label-formatted-file-type": "Formatted file type:"
+  "label-formatted-file-type": "Formatted file type:",
+  "formatted-quantity_one": "There is {{count}} item",
+  "formatted-quantity_other": "There are {{count}} items",
+  "slide-deck": "Slide deck available <a>here</a>.",
+  "file-type-file": "file",
+  "file-type-image": "image",
+  "file-type-video": "video",
+  "formatted-file-type-file": "The file is ready.",
+  "formatted-file-type-image": "The image is ready.",
+  "formatted-file-type-video": "The video is ready."
 }

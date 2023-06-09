@@ -10,5 +10,18 @@
   "label-quantity": "أدخل كمية:",
   "label-formatted-file-type": "نوع الملف المنسق:",
   "label-file-type": "حدد نوع الملف:",
-  "heading": "التدويل للجميع"
+  "heading": "التدويل للجميع",
+  "formatted-quantity_zero": "يوجد {{count}} عناصر",
+  "formatted-quantity_one": "هناك عنصر {{count}}",
+  "formatted-quantity_two": "يوجد {{count}} عناصر",
+  "formatted-quantity_few": "يوجد {{count}} عنصر",
+  "formatted-quantity_many": "يوجد {{count}} مادة",
+  "formatted-quantity_other": "يوجد {{count}} عنصر",
+  "slide-deck": "مجموعة الشرائح المتاحة <a> هنا </a>.",
+  "file-type-file": "ملف",
+  "file-type-image": "صورة",
+  "file-type-video": "فيديو",
+  "formatted-file-type-file": "الملف جاهز.",
+  "formatted-file-type-image": "الصورة جاهزة.",
+  "formatted-file-type-video": "الفيديو جاهز."
 }
