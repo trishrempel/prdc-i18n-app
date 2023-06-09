@@ -97,6 +97,16 @@ function App() {
           <label htmlFor="formatted-currency">Formatted Currency:</label>
           <div id="formatted-currency">{formattedCurrency}</div>
         </div>
+        <p>
+          Slide deck available on the{" "}
+          <a
+            className="App-link"
+            href="https://www.prairiedevcon.com/winnipeg.html"
+          >
+            Prairie Dev Con Winnipeg website
+          </a>
+          .
+        </p>
       </header>
     </div>
   );
