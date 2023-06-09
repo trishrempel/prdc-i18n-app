@@ -80,16 +80,16 @@ function App() {
           <input id="date" type="date" onChange={handleDateChange} />
           <label htmlFor="formatted-date">Formatted date:</label>
           <div id="formatted-date">{formattedDate}</div>
+          <label htmlFor="quantity">Enter a quantity:</label>
+          <input id="quantity" type="number" onChange={handleQuantityChange} />
+          <label htmlFor="formatted-quantity">Formatted Quantity:</label>
+          <div id="formatted-quantity">{formattedQuantity}</div>
           <label htmlFor="currency">Enter a currency:</label>
           <select name="currency" id="currency" onChange={handleCurrencyChange}>
             <option value="USD">US Dollar (USD)</option>
             <option value="EUR">Euro (EUR)</option>
             <option value="JPY">Japanese Yen (JPY)</option>
           </select>
-          <label htmlFor="quantity">Enter a quantity:</label>
-          <input id="quantity" type="number" onChange={handleQuantityChange} />
-          <label htmlFor="formatted-quantity">Formatted Quantity:</label>
-          <div id="formatted-quantity">{formattedQuantity}</div>
           <label htmlFor="amount">Enter an amount:</label>
           <input id="amount" type="number" onChange={handleAmountChange} />
           <label htmlFor="formatted-amount">Formatted Amount:</label>
