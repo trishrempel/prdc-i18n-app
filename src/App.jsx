@@ -1,14 +1,24 @@
 import "./App.css";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
+
+const FILE_TYPES = ["file", "image", "video"];
 
 function App() {
-  const [formattedName, setFormattedName] = useState("");
+  const [formattedFileType, setFormattedFileType] = useState("");
   const [formattedDate, setFormattedDate] = useState("");
   const [formattedQuantity, setFormattedQuantity] = useState("");
   const [amount, setAmount] = useState("");
   const [currency, setCurrency] = useState("USD");
   const [formattedAmount, setFormattedAmount] = useState("");
   const [formattedCurrency, setFormattedCurrency] = useState("");
+
+  const FileTypeOptions = useMemo(() => {
+    return FILE_TYPES.map((fileType) => (
+      <option key={fileType} value={fileType}>
+        {fileType}
+      </option>
+    ));
+  }, []);
 
   const updateFormattedAmount = useCallback(() => {
     if (isNaN(amount) || amount === "") {
@@ -24,13 +34,9 @@ function App() {
     updateFormattedAmount();
   }, [amount, currency, updateFormattedAmount]);
 
-  const handleNameChange = (e) => {
-    const name = e.target.value;
-    if (name === "") {
-      setFormattedName("");
-    } else {
-      setFormattedName(`Hello ${name}!`);
-    }
+  const handleFileTypeChange = (e) => {
+    const fileType = e.target.value;
+    setFormattedFileType(`The ${fileType} is ready.`);
   };
 
   const handleDateChange = (e) => {
@@ -70,21 +76,27 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>i18n is for Everyone</h1>
+        <h1>Internationalization is for Everyone</h1>
         <div className="form">
-          <label htmlFor="date">Enter a name:</label>
-          <input id="name" type="text" onChange={handleNameChange} />
-          <label htmlFor="formatted-name">Formatted name:</label>
-          <div id="formatted-name">{formattedName}</div>
+          <label htmlFor="file-type">Select a file type:</label>
+          <select
+            name="file-type"
+            id="file-type"
+            onChange={handleFileTypeChange}
+          >
+            {FileTypeOptions}
+          </select>
+          <label htmlFor="formatted-file-type">Formatted file type:</label>
+          <div id="formatted-file-type">{formattedFileType}</div>
           <label htmlFor="date">Enter a date:</label>
           <input id="date" type="date" onChange={handleDateChange} />
           <label htmlFor="formatted-date">Formatted date:</label>
           <div id="formatted-date">{formattedDate}</div>
           <label htmlFor="quantity">Enter a quantity:</label>
           <input id="quantity" type="number" onChange={handleQuantityChange} />
-          <label htmlFor="formatted-quantity">Formatted Quantity:</label>
+          <label htmlFor="formatted-quantity">Formatted quantity:</label>
           <div id="formatted-quantity">{formattedQuantity}</div>
-          <label htmlFor="currency">Enter a currency:</label>
+          <label htmlFor="currency">Select a currency:</label>
           <select name="currency" id="currency" onChange={handleCurrencyChange}>
             <option value="USD">US Dollar (USD)</option>
             <option value="EUR">Euro (EUR)</option>
@@ -92,9 +104,9 @@ function App() {
           </select>
           <label htmlFor="amount">Enter an amount:</label>
           <input id="amount" type="number" onChange={handleAmountChange} />
-          <label htmlFor="formatted-amount">Formatted Amount:</label>
+          <label htmlFor="formatted-amount">Formatted amount:</label>
           <div id="formatted-amount">{formattedAmount}</div>
-          <label htmlFor="formatted-currency">Formatted Currency:</label>
+          <label htmlFor="formatted-currency">Formatted currency:</label>
           <div id="formatted-currency">{formattedCurrency}</div>
         </div>
         <p>
