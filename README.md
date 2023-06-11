@@ -1,3 +1,22 @@
+# About this repo
+
+This is a demo repo intended to accompany the [Prairie Dev Con Winnipeg 2023](https://www.prairiedevcon.com/winnipeg.html) talk  [_Internationalization is for Everyone: How to make your code speak the language of your users_](https://bit.ly/prdc-i18n).
+
+This project is licensed under the terms of the MIT license.
+
+## Resources
+
+- [Internationalization is for Everyone slide deck](https://bit.ly/prdc-i18n)
+- [i18next](https://www.i18next.com/)
+  - [Configuration options](https://www.i18next.com/overview/configuration-options)
+  - [react-i18next](https://react.i18next.com/)
+    - [`useTranslation` hook](https://react.i18next.com/latest/usetranslation-hook)
+    - [`Trans` component usage with components array](https://react.i18next.com/latest/trans-component#alternative-usage-components-array)
+  - [i18next-browser-languageDetector plugin](https://github.com/i18next/i18next-browser-languageDetector)
+  - [i18next-http-backend plugin](https://github.com/i18next/i18next-http-backend)
+- [`Intl` EMCAScript Internationalizaton API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl)
+  - [Format.JS Intl Polyfills](https://formatjs.io/docs/polyfills)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
