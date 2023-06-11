@@ -16,6 +16,7 @@ This project is licensed under the terms of the MIT license.
   - [i18next-http-backend plugin](https://github.com/i18next/i18next-http-backend)
 - [`Intl` EMCAScript Internationalizaton API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl)
   - [Format.JS Intl Polyfills](https://formatjs.io/docs/polyfills)
+- [i18n-ally VSCode extension](https://github.com/lokalise/i18n-ally)
 
 # Getting Started with Create React App
 
