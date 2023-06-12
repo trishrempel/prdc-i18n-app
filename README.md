@@ -4,6 +4,14 @@ This is a demo repo intended to accompany the [Prairie Dev Con Winnipeg 2023](ht
 
 This project is licensed under the terms of the MIT license.
 
+## Pull requests
+
+The following pull requests demonstrate different stages of internationalizing and localizing the demo application.
+
+- [Add i18n framework and extract hard-coded strings](https://github.com/trishrempel/prdc-i18n-app/pull/1)
+- [Extract complex strings with interpolation and pluralization](https://github.com/trishrempel/prdc-i18n-app/pull/2)
+- [Localize the application with date, number, currency, and currency name formatting](https://github.com/trishrempel/prdc-i18n-app/pull/3)
+
 ## Resources
 
 - [Internationalization is for Everyone slide deck](https://bit.ly/prdc-i18n)
