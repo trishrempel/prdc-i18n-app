@@ -110,12 +110,9 @@ function App() {
           <div id="formatted-currency">{formattedCurrency}</div>
         </div>
         <p>
-          Slide deck available on the{" "}
-          <a
-            className="App-link"
-            href="https://www.prairiedevcon.com/winnipeg.html"
-          >
-            Prairie Dev Con Winnipeg website
+          Slide deck available{" "}
+          <a className="App-link" href="https://bit.ly/prdc-i18n">
+            here
           </a>
           .
         </p>
