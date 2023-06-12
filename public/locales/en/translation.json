@@ -1,0 +1,14 @@
+{
+  "heading": "Internationalization is for Everyone",
+  "label-locale": "Enter a locale:",
+  "label-date": "Enter a date:",
+  "label-formatted-date": "Formatted date:",
+  "label-currency": "Enter a currency:",
+  "label-quantity": "Enter a quantity:",
+  "label-formatted-quantity": "Formatted quantity:",
+  "label-amount": "Enter an amount:",
+  "label-formatted-amount": "Formatted amount:",
+  "label-formatted-currency": "Formatted currency:",
+  "label-file-type": "Select a file type:",
+  "label-formatted-file-type": "Formatted file type:"
+}

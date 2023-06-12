@@ -1,0 +1,14 @@
+{
+  "label-amount": "أدخل مبلغًا:",
+  "label-currency": "أدخل عملة:",
+  "label-date": "أدخل تاريخًا:",
+  "label-formatted-amount": "المبلغ المنسق:",
+  "label-formatted-currency": "العملة المنسقة:",
+  "label-formatted-date": "التاريخ المنسق:",
+  "label-formatted-quantity": "الكمية المنسقة:",
+  "label-locale": "أدخل لغة:",
+  "label-quantity": "أدخل كمية:",
+  "label-formatted-file-type": "نوع الملف المنسق:",
+  "label-file-type": "حدد نوع الملف:",
+  "heading": "التدويل للجميع"
+}

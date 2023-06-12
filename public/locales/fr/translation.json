@@ -1,0 +1,14 @@
+{
+  "label-amount": "Saisissez un montant :",
+  "label-currency": "Saisissez une devise :",
+  "label-date": "Saisissez une date :",
+  "label-formatted-amount": "Montant formaté :",
+  "label-formatted-currency": "Devise formatée :",
+  "label-formatted-date": "Date formatée :",
+  "label-formatted-quantity": "Quantité formatée :",
+  "label-locale": "Saisissez un paramètre régional :",
+  "label-quantity": "Saisissez une quantité :",
+  "label-formatted-file-type": "Type de fichier formaté :",
+  "label-file-type": "Sélectionnez un type de fichier :",
+  "heading": "L'internationalisation est pour tout le monde"
+}

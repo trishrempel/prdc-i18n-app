@@ -1,9 +1,18 @@
 import "./App.css";
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useMemo,
+  Suspense,
+} from "react";
+import { useTranslation } from "react-i18next";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const FILE_TYPES = ["file", "image", "video"];
 
 function App() {
+  const { t, i18n } = useTranslation();
   const [formattedFileType, setFormattedFileType] = useState("");
   const [formattedDate, setFormattedDate] = useState("");
   const [formattedQuantity, setFormattedQuantity] = useState("");
@@ -33,6 +42,15 @@ function App() {
   useEffect(() => {
     updateFormattedAmount();
   }, [amount, currency, updateFormattedAmount]);
+
+  const handleLocaleChange = (e) => {
+    i18n.changeLanguage(e.target.value);
+    setFormattedFileType("");
+    setFormattedDate("");
+    setFormattedQuantity("");
+    setFormattedAmount("");
+    setFormattedCurrency("");
+  };
 
   const handleFileTypeChange = (e) => {
     const fileType = e.target.value;
@@ -74,50 +92,75 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Internationalization is for Everyone</h1>
-        <div className="form">
-          <label htmlFor="file-type">Select a file type:</label>
-          <select
-            name="file-type"
-            id="file-type"
-            onChange={handleFileTypeChange}
-          >
-            {FileTypeOptions}
-          </select>
-          <label htmlFor="formatted-file-type">Formatted file type:</label>
-          <div id="formatted-file-type">{formattedFileType}</div>
-          <label htmlFor="date">Enter a date:</label>
-          <input id="date" type="date" onChange={handleDateChange} />
-          <label htmlFor="formatted-date">Formatted date:</label>
-          <div id="formatted-date">{formattedDate}</div>
-          <label htmlFor="quantity">Enter a quantity:</label>
-          <input id="quantity" type="number" onChange={handleQuantityChange} />
-          <label htmlFor="formatted-quantity">Formatted quantity:</label>
-          <div id="formatted-quantity">{formattedQuantity}</div>
-          <label htmlFor="currency">Select a currency:</label>
-          <select name="currency" id="currency" onChange={handleCurrencyChange}>
-            <option value="USD">US Dollar (USD)</option>
-            <option value="EUR">Euro (EUR)</option>
-            <option value="JPY">Japanese Yen (JPY)</option>
-          </select>
-          <label htmlFor="amount">Enter an amount:</label>
-          <input id="amount" type="number" onChange={handleAmountChange} />
-          <label htmlFor="formatted-amount">Formatted amount:</label>
-          <div id="formatted-amount">{formattedAmount}</div>
-          <label htmlFor="formatted-currency">Formatted currency:</label>
-          <div id="formatted-currency">{formattedCurrency}</div>
-        </div>
-        <p>
-          Slide deck available{" "}
-          <a className="App-link" href="https://bit.ly/prdc-i18n">
-            here
-          </a>
-          .
-        </p>
-      </header>
-    </div>
+    <Suspense fallback={LoadingSpinner}>
+      <div className="App" dir={i18n.dir()}>
+        <header className="App-header">
+          <h1>{t("heading")}</h1>
+          <div className="form">
+            <label htmlFor="locale">{t("label-locale")}</label>
+            <input
+              id="locale"
+              type="text"
+              onChange={handleLocaleChange}
+              defaultValue={i18n.language}
+            />
+            <label htmlFor="file-type">{t("label-file-type")}</label>
+            <select
+              name="file-type"
+              id="file-type"
+              onChange={handleFileTypeChange}
+            >
+              {FileTypeOptions}
+            </select>
+            <label htmlFor="formatted-file-type">
+              {t("label-formatted-file-type")}
+            </label>
+            <div id="formatted-file-type">{formattedFileType}</div>
+            <label htmlFor="date">{t("label-date")}</label>
+            <input id="date" type="date" onChange={handleDateChange} />
+            <label htmlFor="formatted-date">{t("label-formatted-date")}</label>
+            <div id="formatted-date">{formattedDate}</div>
+            <label htmlFor="quantity">{t("label-quantity")}</label>
+            <input
+              id="quantity"
+              type="number"
+              onChange={handleQuantityChange}
+            />
+            <label htmlFor="formatted-quantity">
+              {t("label-formatted-quantity")}
+            </label>
+            <div id="formatted-quantity">{formattedQuantity}</div>
+            <label htmlFor="currency">{t("label-currency")}</label>
+            <select
+              name="currency"
+              id="currency"
+              onChange={handleCurrencyChange}
+            >
+              <option value="USD">US Dollar (USD)</option>
+              <option value="EUR">Euro (EUR)</option>
+              <option value="JPY">Japanese Yen (JPY)</option>
+            </select>
+            <label htmlFor="amount">{t("label-amount")}</label>
+            <input id="amount" type="number" onChange={handleAmountChange} />
+            <label htmlFor="formatted-amount">
+              {t("label-formatted-amount")}
+            </label>
+            <div id="formatted-amount">{formattedAmount}</div>
+            <label htmlFor="formatted-currency">
+              {t("label-formatted-currency")}
+            </label>
+            <div id="formatted-currency">{formattedCurrency}</div>
+          </div>
+          <p>
+            Slide deck available{" "}
+            <a className="App-link" href="https://bit.ly/prdc-i18n">
+              here
+            </a>
+            .
+          </p>
+        </header>
+      </div>
+    </Suspense>
   );
 }
 
