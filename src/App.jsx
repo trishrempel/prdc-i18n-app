@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import "./App.css";
 import React, {
   useEffect,
@@ -6,7 +7,7 @@ import React, {
   useMemo,
   Suspense,
 } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 const FILE_TYPES = ["file", "image", "video"];
@@ -24,10 +25,10 @@ function App() {
   const FileTypeOptions = useMemo(() => {
     return FILE_TYPES.map((fileType) => (
       <option key={fileType} value={fileType}>
-        {fileType}
+        {t(`file-type-${fileType}`)}
       </option>
     ));
-  }, []);
+  }, [t]);
 
   const updateFormattedAmount = useCallback(() => {
     if (isNaN(amount) || amount === "") {
@@ -54,7 +55,7 @@ function App() {
 
   const handleFileTypeChange = (e) => {
     const fileType = e.target.value;
-    setFormattedFileType(`The ${fileType} is ready.`);
+    setFormattedFileType(t(`formatted-file-type-${fileType}`));
   };
 
   const handleDateChange = (e) => {
@@ -75,9 +76,7 @@ function App() {
     if (isNaN(quantity)) {
       setFormattedQuantity("");
     } else {
-      setFormattedQuantity(
-        `There ${quantity === 1 ? "is 1 item" : `are ${quantity} items`}`
-      );
+      setFormattedQuantity(t("formatted-quantity", { count: quantity }));
     }
   };
 
@@ -152,11 +151,17 @@ function App() {
             <div id="formatted-currency">{formattedCurrency}</div>
           </div>
           <p>
-            Slide deck available{" "}
-            <a className="App-link" href="https://bit.ly/prdc-i18n">
-              here
-            </a>
-            .
+            <Trans
+              i18nKey="slide-deck"
+              components={{
+                a: (
+                  <a
+                    className="App-link"
+                    href="https://www.prairiedevcon.com/winnipeg.html"
+                  />
+                ),
+              }}
+            />
           </p>
         </header>
       </div>
